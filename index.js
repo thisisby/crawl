@@ -1,7 +1,7 @@
 const express = require('express');
 const { URL } = require('url');
 
-const PORT = process.env.PORT ? Number(process.env.PORT) : 3000;
+const PORT = process.env.PORT ? Number(process.env.PORT) : 80;
 
 const app = express();
 
@@ -58,6 +58,10 @@ app.get('/domhtml', async (req, res) => {
       }
     }
   }
+});
+
+app.get('/health', (req, res) => {
+  res.status(200).json({ ok: true });
 });
 
 app.use((req, res) => {
