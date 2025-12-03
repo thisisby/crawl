@@ -42,12 +42,10 @@ app.get('/domhtml', async (req, res) => {
     await page.goto(validatedUrl.toString());
 
     const html = await page.content();
-    console.log(html);
 
     const domHTML = await page.evaluate(() => document.documentElement.outerHTML);
-    console.log(domHTML);
 
-    res.status(200).type('text/plain; charset=utf-8').send(domHTML);
+    res.status(200).json({ domHTML });
   } catch (err) {
     console.error(err);
     res.status(500).type('text/plain; charset=utf-8').send('Internal server error');
