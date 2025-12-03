@@ -70,8 +70,8 @@ const server = http.createServer(async (req, res) => {
     try {
       const { default: puppeteer } = await import('puppeteer');
       const launchOptions = { headless: true };
-      if (process.env.PUPPETEER_EXECUTABLE_PATH) {
-        launchOptions.executablePath = process.env.PUPPETEER_EXECUTABLE_PATH;
+      if (process.env.PUPPETEER_CACHE_DIR) {
+        launchOptions.executablePath = process.env.PUPPETEER_CACHE_DIR;
       }
       browser = await puppeteer.launch(launchOptions);
       const page = await browser.newPage();
